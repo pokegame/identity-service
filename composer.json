@@ -1,0 +1,13 @@
+{
+    "name": "pokegame/identity-service",
+    "description": "Provides endpoints for signup and login",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Federkun",
+            "email": "federkun@gmail.com"
+        }
+    ],
+    "require": {}
+}
