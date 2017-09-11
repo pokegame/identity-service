@@ -3,6 +3,14 @@
 parameters:
     locale: 'en'
 
+    private_key_path: 'file://%kernel.project_dir%/%env(JWT_PRIVATE_KEY_PATH)%'
+    public_key_path:  'file://%kernel.project_dir%/%env(JWT_PUBLIC_KEY_PATH)%'
+    pass_phrase:      '%env(JWT_PASSPHRASE)%'
+
+    crypto_engine: 'OpenSSL'
+    signature_algorithm: 'RS256'
+    token_ttl: ~
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -32,3 +40,14 @@ services:
     App\Repository\UserRepositoryInterface: 
         class: App\Repository\InMemoryUserRepository
     
+    App\Service\JWTEncoderService:
+        arguments:
+            $cryptoEngine: '%crypto_engine%'
+            $signatureAlgorithm: '%signature_algorithm%'
+            $ttl: '%token_ttl%'
+
+    App\Service\KeyLoaderService:
+        arguments:
+            $privateKeyPath: '%private_key_path%'
+            $publicKeyPath: '%public_key_path%'
+            $passphrase: '%pass_phrase%'
