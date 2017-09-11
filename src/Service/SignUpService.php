@@ -9,10 +9,15 @@ use App\Repository\UserRepositoryInterface;
 final class SignUpService
 {
     private $userRepository;
+    private $passwordEncoder;
 
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(
+        UserRepositoryInterface $userRepository,
+        PasswordEncoderService $passwordEncoder
+    )
     {
         $this->userRepository = $userRepository;
+        $this->passwordEncoder = $passwordEncoder;
     }
 
     public function __invoke(SignUpCommand $command): void
@@ -20,7 +25,9 @@ final class SignUpService
         $user = User::registerWithData(
             $command->userId(),
             $command->emailAddress(),
-            $command->password()
+            $this->passwordEncoder->encodePassword(
+                $command->password()
+            )
         );
 
         $this->userRepository->add($user);

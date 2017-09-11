@@ -5,6 +5,7 @@ use PHPUnit\Framework\TestCase;
 use App\Entity\User;
 use App\ValueObject\UserId;
 use App\ValueObject\EmailAddress;
+use App\ValueObject\HashedPassword;
 
 final class UserTest extends TestCase
 {
@@ -12,7 +13,7 @@ final class UserTest extends TestCase
     {
         $userId = UserId::generate();
         $email = EmailAddress::fromString('john@smith.com');
-        $password = 'p4s$woRd';
+        $password = HashedPassword::fromString('$2y$10$.vGA1O9wmRjrwAVXD98HNOgsNpDczlqm3Jq7KnEd1rVAGv3Fykk1a');
 
         $user = User::registerWithData($userId, $email, $password);
 

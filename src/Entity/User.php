@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\ValueObject\UserId;
 use App\ValueObject\EmailAddress;
+use App\ValueObject\HashedPassword;
 
 final class User
 {
@@ -11,14 +12,14 @@ final class User
     private $email;
     private $password;
 
-    private function __construct(UserId $userId, EmailAddress $email, string $password)
+    private function __construct(UserId $userId, EmailAddress $email, HashedPassword $password)
     {
         $this->userId = $userId;
         $this->email = $email;
         $this->password = $password;
     }
 
-    public static function registerWithData(UserId $userId, EmailAddress $email, string $password): self
+    public static function registerWithData(UserId $userId, EmailAddress $email, HashedPassword $password): self
     {
         return new User($userId, $email, $password);
     }
@@ -33,7 +34,7 @@ final class User
         return $this->email;
     }
 
-    public function password(): string
+    public function password(): HashedPassword
     {
         return $this->password;
     }

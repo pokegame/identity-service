@@ -4,6 +4,7 @@ namespace App\Command;
 
 use App\ValueObject\UserId;
 use App\ValueObject\EmailAddress;
+use App\ValueObject\PlainPassword;
 
 final class SignUpCommand
 {
@@ -33,8 +34,8 @@ final class SignUpCommand
         return EmailAddress::fromString($this->emailAddress);
     }
 
-    public function password(): string
+    public function password(): PlainPassword
     {
-        return $this->password;
+        return PlainPassword::fromString($this->password);
     }
 }
