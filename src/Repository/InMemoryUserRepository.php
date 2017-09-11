@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use App\ValueObject\UserId;
+use App\ValueObject\EmailAddress;
 
 final class InMemoryUserRepository implements UserRepositoryInterface
 {
@@ -21,6 +22,17 @@ final class InMemoryUserRepository implements UserRepositoryInterface
         }
 
         return $this->users[$id->toString()];
+    }
+
+    public function getByEmail(EmailAddress $email): ?User
+    {
+        foreach ($this->users as $user) {
+            if ($user->email()->equals($email)) {
+                return $user;
+            }
+        }
+
+        return null;
     }
 
     public function nextIdentity(): UserId
