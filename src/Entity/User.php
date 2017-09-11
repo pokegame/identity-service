@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\ValueObject\UserId;
+use App\ValueObject\EmailAddress;
 
 final class User
 {
@@ -10,14 +11,14 @@ final class User
     private $email;
     private $password;
 
-    private function __construct(UserId $userId, string $email, string $password)
+    private function __construct(UserId $userId, EmailAddress $email, string $password)
     {
         $this->userId = $userId;
         $this->email = $email;
         $this->password = $password;
     }
 
-    public static function registerWithData(UserId $userId, string $email, string $password): self
+    public static function registerWithData(UserId $userId, EmailAddress $email, string $password): self
     {
         return new User($userId, $email, $password);
     }
@@ -27,7 +28,7 @@ final class User
         return $this->userId;
     }
 
-    public function email(): string
+    public function email(): EmailAddress
     {
         return $this->email;
     }

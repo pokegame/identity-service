@@ -4,13 +4,14 @@ use PHPUnit\Framework\TestCase;
 
 use App\Entity\User;
 use App\ValueObject\UserId;
+use App\ValueObject\EmailAddress;
 
 final class UserTest extends TestCase
 {
     public function testRegisterNewUser()
     {
         $userId = UserId::generate();
-        $email = 'john@smith.com';
+        $email = EmailAddress::fromString('john@smith.com');
         $password = 'p4s$woRd';
 
         $user = User::registerWithData($userId, $email, $password);

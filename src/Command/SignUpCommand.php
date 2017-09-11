@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\ValueObject\UserId;
+use App\ValueObject\EmailAddress;
 
 final class SignUpCommand
 {
@@ -27,9 +28,9 @@ final class SignUpCommand
         return UserId::fromString($this->userId);
     }
 
-    public function emailAddress(): string
+    public function emailAddress(): EmailAddress
     {
-        return $this->emailAddress;
+        return EmailAddress::fromString($this->emailAddress);
     }
 
     public function password(): string
