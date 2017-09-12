@@ -2,8 +2,16 @@
 
 namespace App\ValueObject;
 
+use Doctrine\ORM\Mapping AS ORM;
+
+/**
+ * @ORM\Embeddable 
+ */
 final class EmailAddress
 {
+    /**
+     * @ORM\Column(type = "string")
+     */
     private $address;
 
     private function __construct(string $address)

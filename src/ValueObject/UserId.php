@@ -32,4 +32,10 @@ final class UserId
     {
         return $this->uuid->toString();
     }
+
+    // required by doctrine - http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/cookbook/custom-mapping-types.html 
+    public function __toString()
+    {
+        return $this->toString();
+    }
 }

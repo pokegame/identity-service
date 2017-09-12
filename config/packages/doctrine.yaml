@@ -1,14 +1,22 @@
 doctrine:
     dbal:
         url: '%env(DATABASE_URL)%'
+        types:
+            user_id:  App\Doctrine\Type\UserIdType
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         mappings:
-            App:
+            App\Entity:
                 is_bundle: false
                 type: annotation
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity\'
-                alias: App
+                alias: App\Entity
+            App\ValueObject:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/ValueObject'
+                prefix: 'App\ValueObject\'
+                alias: App\ValueObject
