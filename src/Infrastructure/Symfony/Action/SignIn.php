@@ -4,8 +4,6 @@ namespace App\Infrastructure\Symfony\Action;
 
 use App\Application\SignInCommand;
 use App\Application\SignInApplicationService;
-use App\Domain\Model\EmailAddress;
-use App\Domain\Model\PlainPassword;
 use App\Infrastructure\Symfony\Form\SignInType;
 use App\Infrastructure\Service\JWTEncoderService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
