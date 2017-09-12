@@ -25,6 +25,11 @@ final class KeyLoaderService
         return openssl_pkey_get_public($this->publicKeyPath);
     }
 
+    public function getPublicKeyDetails(): array
+    {
+        return openssl_pkey_get_details($this->getPublicKey());
+    }
+
     public function getPassphrase()
     {
         return $this->passphrase;
