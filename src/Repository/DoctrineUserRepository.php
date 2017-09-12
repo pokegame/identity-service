@@ -21,6 +21,7 @@ final class DoctrineUserRepository implements UserRepositoryInterface
     public function add(User $user): void
     {
         $this->entityManager->persist($user);
+        $this->entityManager->flush();
     }
 
     public function get(UserId $id): ?User
