@@ -26,27 +26,24 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        # you can exclude directories or files
-        # but if a service is unused, it's removed anyway
-        exclude: '../src/{Entity,Repository,Tests}'
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
-    App\Action\:
-        resource: '../src/Action'
+    App\Infrastructure\Symfony\Action\:
+        resource: '../src/Infrastructure/Symfony/Action'
         public: true
         tags: ['controller.service_arguments']
 
-    App\Repository\UserRepositoryInterface: 
-        class: App\Repository\DoctrineUserRepository
+    App\Domain\Model\UserRepository: 
+        class: App\Infrastructure\Persistence\Doctrine\DoctrineUserRepository
     
-    App\Service\JWTEncoderService:
+    App\Infrastructure\Service\JWTEncoderService:
         arguments:
             $cryptoEngine: '%crypto_engine%'
             $signatureAlgorithm: '%signature_algorithm%'
             $ttl: '%token_ttl%'
 
-    App\Service\KeyLoaderService:
+    App\Infrastructure\Service\KeyLoaderService:
         arguments:
             $privateKeyPath: '%private_key_path%'
             $publicKeyPath: '%public_key_path%'
