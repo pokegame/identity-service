@@ -38,7 +38,7 @@ services:
         tags: ['controller.service_arguments']
 
     App\Repository\UserRepositoryInterface: 
-        class: App\Repository\InMemoryUserRepository
+        class: App\Repository\DoctrineUserRepository
     
     App\Service\JWTEncoderService:
         arguments:
