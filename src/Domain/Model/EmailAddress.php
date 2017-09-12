@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping AS ORM;
 final class EmailAddress
 {
     /**
-     * @ORM\Column(type = "string")
+     * @ORM\Column(type = "string", unique = true)
      */
     private $address;
 
