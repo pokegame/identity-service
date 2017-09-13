@@ -61,6 +61,7 @@ final class SignIn
         }
 
         $token = $this->jwtEncoderService->encode([
+            'user_id' => $user->id()->toString(),
             'user_email' => $user->email()->toString()
         ]);
 
