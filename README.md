@@ -2,6 +2,14 @@
 
 This provides endpoints for signup and login.
 
+## Configuration
+
+Generate the SSH keys with:
+
+```
+$ make generate-jwt-keys
+```
+
 ## Service API
 
 ### POST /signup
