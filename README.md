@@ -2,9 +2,21 @@
 
 This provides endpoints for signup and login.
 
-## Configuration
+## Installation
 
-Generate the SSH keys with:
+### Install composer dependencies
+
+```
+$ composer install
+```
+
+### Create database tables
+
+```
+$ ./bin/console doctrine:schema:update --force
+```
+
+### Generate the SSH keys
 
 ```
 $ make generate-jwt-keys
